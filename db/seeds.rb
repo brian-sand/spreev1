@@ -7,5 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Spree::Core::Engine.load_seed if defined?(Spree::Core)
-Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+#Spree::Core::Engine.load_seed if defined?(Spree::Core)
+#Spree::Auth::Engine.load_seed if defined?(Spree::Auth)
+
+# Loads seed data out of default dir
+#default_path = File.join(File.dirname(__FILE__), 'data')
+default_path = File.join(File.dirname(__FILE__), 'test', 'init')
+
+Rake::Task['db:load_dir'].reenable
+Rake::Task['db:load_dir'].invoke(default_path)

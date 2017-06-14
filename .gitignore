@@ -16,6 +16,8 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
+# spree public
+/public/spree
 /coverage/
 /spec/tmp
 *.orig
@@ -52,3 +54,7 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore sublime project/workspace file
+*.sublime-project
+*.sublime-workspace
