@@ -36,10 +36,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'spree', '~> 3.2.1'
+#gem 'spree', path: '../spree-3.2.1-src/spree'
 gem 'spree_auth_devise', '~> 3.2.0.beta'
 gem 'spree_gateway', '~> 3.2.0.beta'
 
 gem 'spree_drop_ship', path: '../drop-ship'
+gem 'spree_factory_outlet', path: '../spree_factory_outlet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

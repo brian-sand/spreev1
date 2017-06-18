@@ -8,7 +8,7 @@ set :stage, :production
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server 'ec2-54-169-115-74.ap-southeast-1.compute.amazonaws.com', user: 'spree1user', role: %w{app web db}
+server 'ec2-54-169-64-67.ap-southeast-1.compute.amazonaws.com', user: 'spree1user', role: %w{app web db}
 
 # role-based syntax
 # ==================

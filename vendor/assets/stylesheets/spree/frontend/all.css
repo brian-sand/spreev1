@@ -8,4 +8,5 @@
  *= require_self
  *= require_tree .
  *= require spree/frontend/spree_drop_ship
+ *= require spree/frontend/spree_factory_outlet
 */
