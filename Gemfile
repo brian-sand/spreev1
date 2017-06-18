@@ -41,7 +41,8 @@ gem 'spree_auth_devise', '~> 3.2.0.beta'
 gem 'spree_gateway', '~> 3.2.0.beta'
 
 gem 'spree_drop_ship', path: '../drop-ship'
-gem 'spree_factory_outlet', path: '../spree_factory_outlet'
+#gem 'spree_factory_outlet', path: '../spree_factory_outlet'
+gem 'spree_factory_outlet', github: 'brian-sand/spree_factory_outlet', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
