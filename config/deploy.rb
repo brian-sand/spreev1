@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.8.1"
+lock ">=3.8.1"
 
 set :application, "spreev1"
 set :repo_url, "git@github.com:brian-sand/spreev1.git"
@@ -26,7 +26,7 @@ set :deploy_to, "/home/spree1user/spreev1"
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/spree"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
