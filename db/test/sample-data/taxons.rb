@@ -55,6 +55,10 @@ end
     "Sweaters"=>"Womens, Tops, Sweaters",
     "Knits"=>"Womens,Knits",
     "All Shoes"=>"Womens,All Shoes"
+  },
+  "Mens" => {
+    "Shirts" => "Mens, Shirts",
+    "Polo" => "Mens, Polo"
   }
 }
 
@@ -86,12 +90,13 @@ end
 @categories = Spree::Taxonomy.find_by_name!("Categories")
 # brands = Spree::Taxonomy.find_by_name!(I18n.t('taxonomy_brands_name'))
 
-@default_root_str = "Categories"
+@default_root_str = "categories"
 @taxons = [{
   :name => "Categories",
   :taxonomy => @categories
 }]
 
+# taxon_str_arr = [Womens, Tops, Outerwear & Jackets]
 def create_taxons(taxon_str_arr, product)
   new_taxon_str_arr=[]
   prev_taxon_str = nil
@@ -110,7 +115,7 @@ def create_taxons(taxon_str_arr, product)
     else
       cur_taxon[:parent] = prev_taxon_str
     end
-    prev_taxon_str = taxon_str.strip
+    prev_taxon_str = cur_taxon[:parent] + "/" + taxon_str.strip.downcase
     @taxons.append(cur_taxon)
     # creating a stringify array of taxons so that striping out any spaces
     new_taxon_str_arr.append(taxon_str.strip)
@@ -144,11 +149,20 @@ end
 
 @taxons.each do |taxon_attrs|
 #puts taxon_attrs
-  parent = Spree::Taxon.where(name: taxon_attrs[:parent]).first unless taxon_attrs[:parent].nil?
-  t = Spree::Taxon.where(name: taxon_attrs[:name]).first_or_create! do  |taxon|
-    taxon.parent = parent
-    taxon.taxonomy = taxon_attrs[:taxonomy]
+  t = nil
+  if taxon_attrs[:parent].nil?
+    t = Spree::Taxon.where(name: taxon_attrs[:name]).first_or_create! do  |taxon|
+      taxon.taxonomy = taxon_attrs[:taxonomy]
+    end
+  else
+    parent = Spree::Taxon.where(permalink: taxon_attrs[:parent]).first
+    t_permalink = parent.permalink + "/" + taxon_attrs[:name].downcase
+    t = Spree::Taxon.where(name: taxon_attrs[:name], permalink: t_permalink).first_or_create! do  |taxon|
+      taxon.parent = parent
+      taxon.taxonomy = taxon_attrs[:taxonomy]
+    end
   end
+
   begin
     if(!taxon_attrs[:taxon_arr_str].nil? && !taxon_attrs[:product].nil?)
       t.products << taxon_attrs[:product]

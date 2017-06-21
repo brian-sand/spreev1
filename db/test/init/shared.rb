@@ -16,6 +16,7 @@ module Shared
       File.join(root_data_path, 'ab-sales', 'abercrombie-sale-tees.csv'),
       File.join(root_data_path, 'ab-sales', 'abercrombie-sale-shorts.csv'),
       File.join(root_data_path, 'ab-sales', 'abercrombie-sale-sleep.csv'),
+      File.join(root_data_path, 'untuckit', 'untuckit-sale-1.csv')
     ]
   end
 

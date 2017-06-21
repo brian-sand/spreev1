@@ -5,7 +5,8 @@ Spree::Config[:currency] = "HKD"
 
 suppliers = {
   "Ralph Lauren" => Spree::Supplier.where(name: "Ralph Lauren")&.first,
-  "Abercrombie"  => Spree::Supplier.where(name: "Abercrombie")&.first
+  "Abercrombie"  => Spree::Supplier.where(name: "Abercrombie")&.first,
+  "Untuckit"  => Spree::Supplier.where(name: "Untuckit")&.first,
 }
 
 csv_files_path.each do |p_file|
@@ -20,6 +21,9 @@ csv_files_path.each do |p_file|
       product.sku=p_sku
       product.description = p_description
       product.price = p_price
+      if Spree::Variant.column_names.include?('sale_price')
+        product.sale_price = (p_price * rand(25..35) / 100).round(2)
+      end
       product.available_on = Time.zone.now
       product.shipping_category = default_shipping_category
     end

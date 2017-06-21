@@ -1,9 +1,11 @@
 
 ab_dir_path = File.join(File.dirname(__FILE__), '..', 'data','ab-sales')
 rl_dir_path = File.join(File.dirname(__FILE__), '..', 'data','ralph-sale')
+ut_dir_path = File.join(File.dirname(__FILE__), '..', 'data','untuckit')
 @dir_path_map = {
   "Ralph Lauren" => rl_dir_path,
-  "Abercrombie" => ab_dir_path
+  "Abercrombie" => ab_dir_path,
+  "Untuckit" => ut_dir_path
 }
 
 # return an array of file_path(s)
